@@ -143,3 +143,48 @@ async function getSavedJobs(req, res) {
       .json({ error: "Errore nel recupero degli annunci salvati." });
   }
 }
+
+async function getJobById(req, res) {
+  try {
+    const [rows] = await pool.execute("SELECT * FROM jobs WHERE id = ?", [
+      req.params.id,
+    ]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: "Annuncio non trovato." });
+    }
+
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.error("🔥 Errore in getJobById:", error);
+    res.status(500).json({ error: "Errore nel recupero dell'annuncio." });
+  }
+}
+
+/**
+ * Endpoint: DELETE /api/jobs/:id
+ * Elimina un annuncio (utile per la UI)
+ */
+async function deleteJob(req, res) {
+  try {
+    const [result] = await pool.execute("DELETE FROM jobs WHERE id = ?", [
+      req.params.id,
+    ]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Annuncio non trovato." });
+    }
+
+    res.status(200).json({ message: "Annuncio eliminato." });
+  } catch (error) {
+    console.error("🔥 Errore in deleteJob:", error);
+    res.status(500).json({ error: "Errore nell'eliminazione dell'annuncio." });
+  }
+}
+
+module.exports = {
+  searchJobs,
+  getSavedJobs,
+  getJobById,
+  deleteJob,
+};
