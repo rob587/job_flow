@@ -1,0 +1,30 @@
+# Dipendenze
+node_modules/
+package-lock.json
+yarn.lock
+
+# Variabili d'ambiente (CRUCIALE: non committare mai le chiavi API)
+.env
+.env.local
+.env.*.local
+
+# Build del frontend
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# Log e file temporanei
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# IDE e editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Database locale (se in futuro esporterai dump)
+*.sql.gz
