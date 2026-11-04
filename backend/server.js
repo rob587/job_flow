@@ -8,6 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const jobsRoutes = require("./routes/jobs.routes");
+const preferencesRoutes = require("./routes/preferences.routes");
+
 app.use("/api/jobs", jobsRoutes);
 app.use("/api/preferences", preferencesRoutes);
 

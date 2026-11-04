@@ -1,6 +1,6 @@
-const pool = require("../config/db");
-const { fetchAllJobs } = require("../services/fetcher.service");
-const { evaluateJobsBatch } = require("../services/ai.service");
+const pool = require("../config/db.js");
+const { fetchAllJobs } = require("../services/fetcher.service.js");
+const { evaluateJobsBatch } = require("../services/ai.services.js");
 
 async function searchJobs(req, res) {
   const {
