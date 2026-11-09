@@ -1,0 +1,9 @@
+@import "tailwindcss"; /* <-- In v4 si usa questa singola riga */
+
+/* Da qui in poi puoi mettere i tuoi stili personalizzati */
+@layer base {
+  body {
+    background-color: #f8fafc; /* slate-50 */
+    color: #1e293b; /* slate-800 */
+  }
+}
