@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch, isLoading }) => {
   const [keywords, setKeywords] = useState("");
   const [location, setLocation] = useState("");
   const [remoteOnly, setRemoteOnly] = useState(false);
