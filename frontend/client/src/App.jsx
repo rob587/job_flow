@@ -15,10 +15,15 @@ function App() {
   useEffect(() => {
     const initApp = async () => {
       try {
-        // Carichiamo annunci salvati
         const savedRes = await jobService.getSaved({ limit: 6 });
-        if (savedRes.data.jobs.length > 0) {
-          setJobs(savedRes.data.jobs);
+
+        // Controllo difensivo: se jobs non esiste o non è un array, usiamo array vuoto
+        const savedJobs = Array.isArray(savedRes.data?.jobs)
+          ? savedRes.data.jobs
+          : [];
+
+        if (savedJobs.length > 0) {
+          setJobs(savedJobs);
           setHasSearched(true);
         }
       } catch (err) {
@@ -27,7 +32,6 @@ function App() {
     };
     initApp();
   }, []);
-
   const handleSearch = async (criteria) => {
     setIsLoading(true);
     setError(null);

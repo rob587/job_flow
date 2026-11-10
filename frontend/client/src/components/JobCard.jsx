@@ -1,6 +1,6 @@
 import React from "react";
 
-const JobCard = () => {
+const JobCard = ({ job }) => {
   const getScoreColor = (score) => {
     if (score >= 80) return "bg-emerald-500";
     if (score >= 60) return "bg-amber-500";
